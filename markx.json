@@ -1,0 +1,28 @@
+{
+  "template": "layout/template.jade",
+  "file": "example/docs.md",
+  "output": "index.html",
+  "masher": {
+    "assetPath": "",
+    "outputPath": "dist",
+    "groups": {
+      "common": {
+        "styles": [
+          "ui/common.css",
+          "ui/ir_black.css"
+        ],
+        "scripts": [
+          "ui/jquery.min.js",
+          "ui/jquery.toc.min.js"
+        ]
+      }
+    },
+    "plugins": {
+      "pre": [
+      ],
+      "post": [
+        "hash"
+      ]
+    }
+  }
+}
