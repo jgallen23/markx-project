@@ -1,7 +1,6 @@
 {
   "template": "layout/template.jade",
-  "file": "example/docs.md",
-  "output": "index.html",
+  "input": "example/docs.md",
   "masher": {
     "assetPath": "",
     "outputPath": "dist",
