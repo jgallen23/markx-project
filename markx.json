@@ -1,6 +1,10 @@
 {
   "template": "layout/template.jade",
   "input": "example/docs.md",
+  "data": {
+    "pageTitle": "Project name",
+    "githubUrl": "http://github.com/jgallen23/project"
+  },
   "masher": {
     "assetPath": "",
     "outputPath": "dist",
