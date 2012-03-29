@@ -1,7 +1,11 @@
 #wrapper { 
   /*width: 900px; */
   /*margin: 0 auto; */
-	margin-left: 200px;
+	margin: 0 20px 0 170px;
+}
+
+.github-repo {
+  width: 600px;
 }
 
 a {

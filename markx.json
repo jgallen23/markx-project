@@ -3,7 +3,9 @@
   "input": "example/docs.md",
   "data": {
     "pageTitle": "Project name",
-    "githubUrl": "http://github.com/jgallen23/project"
+    "user": "jgallen23",
+    "repo": "toc",
+    "livejs": false
   },
   "masher": {
     "assetPath": "",
@@ -12,16 +14,20 @@
       "common": {
         "styles": [
           "ui/common.css",
-          "ui/ir_black.css"
+          "ui/ir_black.css",
+          "ui/vendor/hubinfo/dist/hubinfo.css"
         ],
         "scripts": [
           "ui/jquery.min.js",
-          "ui/jquery.toc.min.js"
+          "ui/jquery.toc.min.js",
+          "ui/vendor/hubinfo/dist/hubinfo.js",
+          "ui/vendor/hubinfo/dist/templates/social.js"
         ]
       }
     },
     "plugins": {
       "pre": [
+        "stylus"
       ],
       "post": [
         "hash"
