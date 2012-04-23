@@ -1,5 +1,3 @@
-
-
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
@@ -11,6 +9,7 @@ program
   .usage('[options] <file>')
   .option('-o, --output <dir>', 'directory to write all assets')
   .option('-p, --preview <port>', 'start server to preview')
+  .option('-d, --debug', 'use this option if you are building new templates')
   .parse(process.argv);
 
 
@@ -19,7 +18,6 @@ var files = program.args;
 if (files.length == 1) {
   var file = files[0];
   var assets = path.join(__dirname, '../');
-  console.log(assets);
   var output = program.output || process.cwd();
   var options = {
     input: file,
@@ -33,20 +31,20 @@ if (files.length == 1) {
     },
     masher: {
       assetPath: assets,
-      outputPath: output+'/dist',
-      urlPath: '/dist',
+      publicPath: (program.debug) ? assets : output,
+      outputDir: 'dist',
+      mappingPath: assets+'/ui/masher-mapping.json',
       groups: {
         common: {
           styles: [
             'ui/common.css',
             'ui/ir_black.css',
-            'ui/vendor/hubinfo/dist/hubinfo.css'
+            'ui/hubinfo/hubinfo.css'
           ],
           scripts: [
             'ui/jquery.min.js',
             'ui/jquery.toc.js',
-            'ui/vendor/hubinfo/dist/hubinfo.js',
-            'ui/vendor/hubinfo/dist/templates/social.js'
+            'ui/hubinfo/hubinfo.js'
           ]
         }
       },
@@ -61,7 +59,12 @@ if (files.length == 1) {
     }
   };
 
-  options.masher = new Masher(options.masher, (options.preview));
+  options.masher = new Masher(options.masher, false);
+  if (program.debug) {
+    options.masher.debug = true;
+    options.masher.build();
+    options.masher.debug = true;
+  }
 
   if (options.preview) {
     markx.preview(file, options);

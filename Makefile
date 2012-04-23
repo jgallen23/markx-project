@@ -1,9 +1,11 @@
 install: clean
 	@git submodule update --init
 	@npm install
-	@cp -r ui/vendor/hubinfo/dist/images dist/
+	@mkdir dist
+	@mkdir dist/images
+	@cp -r ui/hubinfo/images/* dist/images
 
 clean:
-	rm -rf dist
+	@rm -rf dist
 
 .PHONY: install clean preview
