@@ -3,10 +3,11 @@ html
   head
     title= pageTitle
     link(href='http://fonts.googleapis.com/css?family=Voces', rel='stylesheet', type='text/css')
-    if livejs
-      script(src='ui/live.js')
+    if preview
+      script(src='/stalk.js')
     != masher.style('common')
-    include analytics
+    if !preview
+      include analytics
   body
     div#toc
     a(href="http://github.com/#{user}/#{repo}")

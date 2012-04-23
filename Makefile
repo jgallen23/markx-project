@@ -1,10 +1,6 @@
-preview:
-	@./node_modules/.bin/markx --preview 8001 markx.json
-
 install: clean
 	@git submodule update --init
-	@npm install markx
-	@npm install stylus
+	@npm install
 	@cp -r ui/vendor/hubinfo/dist/images dist/
 
 clean:
