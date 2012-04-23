@@ -1,3 +1,0 @@
-[submodule "ui/vendor/hubinfo"]
-	path = ui/vendor/hubinfo
-	url = git://github.com/jgallen23/hubinfo.git
