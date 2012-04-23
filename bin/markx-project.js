@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var markx = require('markx');
 var Masher = require('masher');
+var exec = require('child_process').exec
 
 program
   .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
@@ -59,10 +60,14 @@ if (files.length == 1) {
     }
   };
 
+  //copy images
+  var imgSrc = path.join(assets, 'ui/hubinfo/images');
+  var imgDest = path.join(options.masher.publicPath, options.masher.outputDir, 'images');
+  exec('mkdir -p '+ imgDest + ' && cp -r ' + imgSrc + '/* ' + imgDest);
+
   options.masher = new Masher(options.masher, false);
+  options.masher.build();
   if (program.debug) {
-    options.masher.debug = true;
-    options.masher.build();
     options.masher.debug = true;
   }
 
