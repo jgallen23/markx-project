@@ -10,6 +10,9 @@ program
   .usage('[options] <file>')
   .option('-o, --output <dir>', 'directory to write all assets')
   .option('-p, --preview <port>', 'start server to preview')
+  .option('-t, --title', 'page title')
+  .option('-u, --user', 'github user')
+  .option('-r, --repo', 'github repo')
   .option('-d, --debug', 'use this option if you are building new templates')
   .parse(process.argv);
 
@@ -25,9 +28,9 @@ if (files.length == 1) {
     template: assets + '/layout/template.jade',
     preview: program.preview,
     data: {
-      pageTitle: 'Project name',
-      user: 'jgallen23',
-      repo: 'toc',
+      pageTitle: program.title,
+      user: program.user,
+      repo: program.repo,
       preview: (program.preview)
     },
     masher: {
