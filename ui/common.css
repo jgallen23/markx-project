@@ -53,6 +53,10 @@ small, aside {
     font-size: 10px;
 }
 
+code {
+  word-wrap: break-word;
+}
+
 #toc {
   top: 0px;
   left: 0px;

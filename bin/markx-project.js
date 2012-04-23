@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var program = require('commander');
 var fs = require('fs');
 var path = require('path');
@@ -10,16 +12,17 @@ program
   .usage('[options] <file>')
   .option('-o, --output <dir>', 'directory to write all assets')
   .option('-p, --preview <port>', 'start server to preview')
-  .option('-t, --title', 'page title')
-  .option('-u, --user', 'github user')
-  .option('-r, --repo', 'github repo')
+  .option('-t, --title <title>', 'page title')
+  .option('-u, --user <user>', 'github user')
+  .option('-r, --repo <repo>', 'github repo')
   .option('-d, --debug', 'use this option if you are building new templates')
+  .option('-b, --build', 'use this option if you need to rebuild the assets')
   .parse(process.argv);
 
 
 var files = program.args;
 
-if (files.length == 1) {
+if (program.build || files.length == 1) {
   var file = files[0];
   var assets = path.join(__dirname, '../');
   var output = program.output || process.cwd();
@@ -65,7 +68,7 @@ if (files.length == 1) {
 
   //copy images
   if (!program.preview) {
-    var imgSrc = path.join(assets, 'ui/hubinfo/images');
+    var imgSrc = path.join(assets, 'dist/images');
     var imgDest = path.join(options.masher.publicPath, options.masher.outputDir, 'images');
     exec('mkdir -p '+ imgDest + ' && cp -r ' + imgSrc + '/* ' + imgDest);
   }
@@ -78,7 +81,8 @@ if (files.length == 1) {
     options.masher.debug = true;
   }
 
-  if (options.preview) {
+  if (options.build) {
+  } else if (options.preview) {
     markx.preview(file, options);
   } else {
     markx.convert(file, options, function(out) {
