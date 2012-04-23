@@ -35,7 +35,7 @@ if (files.length == 1) {
     },
     masher: {
       assetPath: assets,
-      publicPath: (program.debug) ? assets : output,
+      publicPath: (program.preview || program.debug) ? assets : output,
       outputDir: 'dist',
       mappingPath: assets+'/ui/masher-mapping.json',
       groups: {
@@ -64,12 +64,16 @@ if (files.length == 1) {
   };
 
   //copy images
-  var imgSrc = path.join(assets, 'ui/hubinfo/images');
-  var imgDest = path.join(options.masher.publicPath, options.masher.outputDir, 'images');
-  exec('mkdir -p '+ imgDest + ' && cp -r ' + imgSrc + '/* ' + imgDest);
+  if (!program.preview) {
+    var imgSrc = path.join(assets, 'ui/hubinfo/images');
+    var imgDest = path.join(options.masher.publicPath, options.masher.outputDir, 'images');
+    exec('mkdir -p '+ imgDest + ' && cp -r ' + imgSrc + '/* ' + imgDest);
+  }
 
   options.masher = new Masher(options.masher, false);
-  options.masher.build();
+  if (!program.preview) {
+    options.masher.build();
+  }
   if (program.debug) {
     options.masher.debug = true;
   }
