@@ -51,7 +51,8 @@ if (program.build || files.length == 1) {
           scripts: [
             'ui/jquery.min.js',
             'ui/jquery.toc.js',
-            'ui/hubinfo/hubinfo.js'
+            'ui/hubinfo/hubinfo.js',
+            'ui/hubinfo-template.js'
           ]
         }
       },

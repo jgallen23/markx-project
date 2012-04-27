@@ -104,6 +104,8 @@
 
         var el = $(item);
         el.html(tmpl);
+        el.trigger('render');
+
       
       });
     });
