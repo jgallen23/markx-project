@@ -1,7 +1,7 @@
 {
   "name": "markx-project",
   "description": "a cli to generate github project pages with markx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/jgallen23/markx-project",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
