@@ -58,10 +58,9 @@ if (program.build || files.length == 1) {
       },
       plugins: {
         pre: [
-          'stylus'
         ],
         post: [
-          'hash'
+          'compress'
         ]
       }
     }
