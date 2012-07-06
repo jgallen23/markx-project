@@ -9,9 +9,9 @@
     "url": "https://github.com/jgallen23/markx-project.git"
   },
   "dependencies": {
-    "commander": "*",
-    "markx": "*",
-    "masher": "*"
+    "commander": "1.0.0",
+    "markx": "0.0.17",
+    "masher": "0.4.2"
   },
   "devDependencies": {
   },
