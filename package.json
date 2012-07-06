@@ -15,6 +15,6 @@
   },
   "devDependencies": {
   },
-  "bin": { "markx-project": "./bin/markx.js" },
+  "bin": { "markx-project": "./bin/markx-project.js" },
   "keywords": ["cli", "markx", "github"]
 }
